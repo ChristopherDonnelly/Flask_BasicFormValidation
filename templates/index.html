@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Basic Form Validation</title>
+    </head>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+    <body>
+        <div id="wrapper">
+            <h1>Enter a Valid(Any) Name!</h1>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <p class="{{ category }}">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form action='/process' method='POST'>
+                Name:
+                <input type="text" name="name">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </body>
+</html>
